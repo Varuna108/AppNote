@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/rounded_corner"
-        android:padding="10sp"
+        android:padding="10dp"
         android:layout_margin="10dp">
         <EditText
             android:id="@+id/title_input"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background_color_hint"
             android:hint="@string/hint_title"
-            android:textColorHint="#595454"
+            android:textColorHint="@color/text_color_hint"
             android:layout_margin="10dp"/>
 
         <EditText
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background_color_hint"
             android:hint="@string/hint_description"
-            android:textColorHint="#595454"
+            android:textColorHint="@color/text_color_hint"
             android:layout_margin="10dp"
             android:lines="10"
             android:gravity="top" />
