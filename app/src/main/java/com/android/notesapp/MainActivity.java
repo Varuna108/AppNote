@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -18,6 +21,8 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 
 public class MainActivity extends AppCompatActivity {
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +46,36 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         MyAdapter myAdapter = new MyAdapter(new NoteClickListener() {
             @Override
             public void OnClick(Note note) {
                 Toast.makeText(getApplicationContext(), note.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void OnDelete(Note note) {
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                note.deleteFromRealm();
+                realm.commitTransaction();
+              //  Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show();
 
             }
+
+            @Override
+            public void OnEdit(Note note) {
+                Intent intent = new Intent(MainActivity.this, EditNoteActivity.class);
+                intent.putExtra("Key_title", note.getTitle());
+                intent.putExtra("Key_description", note.getDescription());
+                startActivity(intent);
+            }
+
+
+
         }, noteList);
         recyclerView.setAdapter(myAdapter);
+
 
         noteList.addChangeListener(new RealmChangeListener<RealmResults<Note>>() {
             @SuppressLint("NotifyDataSetChanged")

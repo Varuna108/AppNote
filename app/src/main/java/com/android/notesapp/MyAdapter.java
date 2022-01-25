@@ -18,6 +18,9 @@ import io.realm.RealmResults;
 
 interface NoteClickListener {
     public void OnClick (Note note);
+    public void OnDelete (Note note);
+    public void OnEdit (Note note);
+
 }
 
 
@@ -68,11 +71,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         if(menuItem.getItemId() == R.id.Delete) {
-                            Realm realm = Realm.getDefaultInstance();
-                            realm.beginTransaction();
-                            note.deleteFromRealm();
-                            realm.commitTransaction();
-                            Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show();
+                           listener.OnDelete(note);
+                        } else if(menuItem.getItemId() == R.id.Edit) {
+                            listener.OnEdit(note);
                         }
                         return true;
                     }

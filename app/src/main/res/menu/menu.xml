@@ -5,6 +5,9 @@
         android:title="Delete"
         android:icon="@drawable/rounded_corner"
         ></item>
-
+    <item
+        android:id="@+id/Edit"
+        android:title="Edit"
+        android:icon="@drawable/rounded_corner"/>
 
 </menu>

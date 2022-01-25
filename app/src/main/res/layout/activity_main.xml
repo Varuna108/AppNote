@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_bottom"
     android:background="@color/background_color"
-    tools:context=".MainActivity" >
-    <!--Поменять на другой constainLayout    -->
-    
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/notes_title"
         android:text="@string/title"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        />
+         />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/recycler_view"
-        android:layout_below="@id/notes_title"
-        android:layout_above="@id/add_note"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.95"/>
+
+
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_note"
+        android:backgroundTint="@color/white"
         android:text="@string/add_new_note"
         android:textColor="@color/background_color"
-        android:backgroundTint="@color/white"
-        android:layout_alignParentBottom="true"
+        android:layout_weight="0.01"
         />
 
 
 
-
-
-</RelativeLayout>
+</LinearLayout>
