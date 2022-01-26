@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background_color_hint"
             android:hint="@string/hint_title"
+            android:textColor="@color/black"
             android:textColorHint="@color/text_color_hint"
             android:layout_margin="10dp"/>
 
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background_color_hint"
             android:hint="@string/hint_description"
+            android:textColor="@color/black"
             android:textColorHint="@color/text_color_hint"
             android:layout_margin="10dp"
             android:lines="10"
